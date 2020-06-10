@@ -130,7 +130,7 @@ async function fetchData(url) {
      * then the timeout promise will kick in
      */
     let results = await Promise.race([
-      fetch(url, {mode: 'no-cors'}),
+      fetch(url),
       timeoutPromise
     ]).catch(e => {
         throw `There was error fetching data: ${e}`;
