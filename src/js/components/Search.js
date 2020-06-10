@@ -90,15 +90,8 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         width: "100%"
     },
-    fabProgress: {
-        color: green[500],
-        position: 'absolute',
-        top: -6,
-        left: -6,
-        zIndex: 1,
-    },
     buttonProgress: {
-        color: green[500],
+        color: theme.palette.primary.main,
         position: 'absolute',
         top: '50%',
         left: '50%',
