@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Container from '@material-ui/core/Container';
 import { green } from '@material-ui/core/colors';
-import Grow from '@material-ui/core/Grow';
+import Fade from '@material-ui/core/Fade';
 import Grid from '@material-ui/core/Grid';
 import  {MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import Link from '@material-ui/core/Link';
@@ -25,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         paddingRight: theme.spacing(2),
         paddingLeft: theme.spacing(2)
-    },
-    title: {
-        flexGrow: 1,
     },
     appBarSpacer: theme.mixins.toolbar,
     content: {
@@ -67,8 +64,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         borderBottom: `3px solid ${theme.palette.primary.main}`,
-        marginBottom: theme.spacing(1),
-        marginTop: theme.spacing(1)
+        marginBottom: theme.spacing(2),
+        marginTop: theme.spacing(1),
+        paddingBottom: theme.spacing(0.25),
     },
     divider: {
         marginTop: theme.spacing(2)
@@ -145,6 +143,7 @@ async function fetchData(url) {
   }
 
 export default function Search() {
+    let focusInput = React.useRef(null);
     const classes = useStyles();
     const [loading, setLoading] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState("");
@@ -217,24 +216,28 @@ export default function Search() {
     
     const resetFields = (event) => {
         event.preventDefault();
+        if (!isAnyFullfilled()) {
+            return false;
+        }
         setFirstName("");
         setLastName("");
         setDOB(null);
         setErrorMessage("");
         setSuccess(false);
+        setTimeout(() => {
+            focusInput.current.focus();
+        }, 100);
     }
     let errorStyle = {
         "display" : errorMessage? "block": "none"
     };
+    
     return (
         <div id="searchContainer" className={classes.root}>
             <section className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...{ timeout: 500 }}
-                >
+                <Fade
+                     in={true} mountOnEnter unmountOnExit {...{ timeout: 1000 }}>
                     <Container maxWidth="lg" className={classes.container}>
                         <div className={classes.paper}>
                             <Box className={classes.titleHeader}>
@@ -255,6 +258,7 @@ export default function Search() {
                                     value={firstName}
                                     autoFocus
                                     onChange={handleFirstNameChange}
+                                    inputRef={focusInput}
                                 />
                                 <TextField
                                     variant="standard"
@@ -317,7 +321,7 @@ export default function Search() {
                         </div>
                         <Error message={errorMessage} style={errorStyle} className={classes.error}/>
                     </Container>
-                </Grow>
+                </Fade>
             </section>
         </div>
     );
