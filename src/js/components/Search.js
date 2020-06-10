@@ -75,15 +75,12 @@ const useStyles = makeStyles((theme) => ({
     },
     link: {
         textDecoration: "underline",
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
         cursor: "pointer"
     },
     linkDisabled: {
         textDecoration: "underline",
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        cursor: "auto"
+        cursor: "auto",
+        color: "#777"
     },
     wrapper: {
         margin: theme.spacing(1),
@@ -95,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         top: '50%',
         left: '50%',
-        marginTop: -12,
+        marginTop: -8,
         marginLeft: -12,
     },
     buttonSuccess: {
@@ -215,7 +212,7 @@ export default function Search() {
     }
 
     const isAnyFullfilled = () => {
-        return firstName || lastName;
+        return firstName || lastName || dob;
     }
     
     const resetFields = (event) => {
@@ -294,24 +291,26 @@ export default function Search() {
                                 <Box className={classes.divider}/>
                                 <Grid container direction="row" justify="center" alignItems="center">
                                     <Grid item xs={12} md={4} lg={4}>
-                                    <div className={classes.wrapper}>
-                                        <Button
-                                            fullWidth
-                                            variant="contained"
-                                            color="primary"
-                                            size="large"
-                                            className={`${buttonClassname} ${classes.submit}`}
-                                            disabled={loading || !isRequiredFullfilled()}
-                                            onClick={searchPatient}
-                                        >
-                                            Search
-                                            <ZoomInIcon className={classes.avatar}/>
-                                        </Button>
-                                        {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
-                                    </div>
-                                    <Link variant="body2" color="primary" className={!isAnyFullfilled() ? `text-muted ${classes.linkDisabled}` : classes.link} onClick={resetFields} disabled={!isAnyFullfilled()} align="right">
-                                        Reset
-                                    </Link>
+                                        <div className={classes.wrapper}>
+                                            <Button
+                                                fullWidth
+                                                variant="contained"
+                                                color="primary"
+                                                size="large"
+                                                className={`${buttonClassname} ${classes.submit}`}
+                                                disabled={loading || !isRequiredFullfilled()}
+                                                onClick={searchPatient}
+                                            >
+                                                Search
+                                                <ZoomInIcon className={classes.avatar}/>
+                                            </Button>
+                                            {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+                                        </div>
+                                        <div className="text-right">
+                                            <Link variant="body2" color="primary" className={!isAnyFullfilled() ? `${classes.linkDisabled} muted-text` : classes.link} onClick={resetFields} disabled={!isAnyFullfilled()} align="right">
+                                                Reset
+                                            </Link>
+                                        </div>
                                     </Grid>
                                 </Grid>
                             </form>
