@@ -254,7 +254,7 @@ export default function Search() {
                                     id="firstName"
                                     label="First Name"
                                     name="firstName"
-                                    autoComplete
+                                    autoComplete="firstName"
                                     value={firstName}
                                     autoFocus
                                     onChange={handleFirstNameChange}
@@ -268,7 +268,7 @@ export default function Search() {
                                     name="lastName"
                                     label="Last Name"
                                     id="lastName"
-                                    autoComplete
+                                    autoComplete="lastName"
                                     value={lastName}
                                     onChange={handleLastNameChange}
                                 />
