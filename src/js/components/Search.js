@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
     },
     container: {
-        paddingTop: theme.spacing(2),
+        paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(3),
         paddingLeft: theme.spacing(4),
         paddingRight: theme.spacing(4),
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#777"
     },
     wrapper: {
-        margin: theme.spacing(1),
+        margin: theme.spacing(1, 0, 0),
         position: 'relative',
         width: "100%"
     },
@@ -168,7 +168,6 @@ export default function Search() {
     const searchPatient = () => {
         setLoading(true);
         fetchData(getPatientSearchURL()).then(response => {
-            console.log(response);
             if (!response || !response.entry || !response.entry.length) {
                 setErrorMessage("No patient found.");
                 setSuccess(false);
@@ -177,7 +176,6 @@ export default function Search() {
             setErrorMessage('');
             setSuccess(true);
             setLoading(false);
-            console.log("Launch here? ");
             //TODO get the correct Launch URL
             if (process.env.LAUNCH_URL) {
                 window.location = process.env.LAUNCH_URL;
