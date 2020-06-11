@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: 16, // keep right padding when drawer closed
     },
     topBar: {
-        padding: `${theme.spacing(2)}px ${theme.spacing(2)}px ${theme.spacing(1)}px`,
+        padding: 0,
         background: "#FFF",
         display: "flex",
         flexDirection: "row",
