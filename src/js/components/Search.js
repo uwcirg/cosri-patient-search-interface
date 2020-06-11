@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
     },
     container: {
-        paddingTop: theme.spacing(3),
+        paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(3),
         paddingLeft: theme.spacing(4),
         paddingRight: theme.spacing(4),
@@ -254,7 +254,7 @@ export default function Search() {
                                     id="firstName"
                                     label="First Name"
                                     name="firstName"
-                                    autoComplete="firstName"
+                                    autoComplete
                                     value={firstName}
                                     autoFocus
                                     onChange={handleFirstNameChange}
@@ -267,9 +267,8 @@ export default function Search() {
                                     fullWidth
                                     name="lastName"
                                     label="Last Name"
-                                    type="lastName"
                                     id="lastName"
-                                    autoComplete="lastName"
+                                    autoComplete
                                     value={lastName}
                                     onChange={handleLastNameChange}
                                 />

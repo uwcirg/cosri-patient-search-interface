@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: 16, // keep right padding when drawer closed
     },
     topBar: {
-        padding: 0,
+        padding: `${theme.spacing(1.5)}px ${theme.spacing(2)}px`,
         background: "#FFF",
         display: "flex",
         flexDirection: "row",
@@ -39,15 +39,15 @@ const useStyles = makeStyles((theme) => ({
     },
     welcomeContainer: {
         display: "flex",
-        marginRight: theme.spacing(4)
+        marginRight: theme.spacing(2)
     },
     welcomeText: {
         marginTop: theme.spacing(0.5),
-        fontWeight: 400
+        fontWeight: 400,
     },
     avatar: {
-        color: theme.palette.primary.main,
-        borderColor: theme.palette.primary.main,
+        color: theme.palette.primary.dark,
+        borderColor: theme.palette.primary.dark,
         borderWidth: "1px",
         borderStyle: "solid",
         background: "transparent",
@@ -70,7 +70,7 @@ export default function Header() {
                     </Typography>
                 </Box>
             </Toolbar>
-            <Toolbar className={classes.toolbar}>
+            <Toolbar className={classes.toolbar} disableGutters variant="dense">
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title} align="center">
                     Clinical Opioid Summary with Rx Integration
                 </Typography>

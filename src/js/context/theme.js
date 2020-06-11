@@ -4,8 +4,10 @@ import cyan from '@material-ui/core/colors/cyan';
 const theme = createMuiTheme({
   palette: {
     primary: {
+        lightest: cyan[50],
         lighter: cyan[100],
         light: cyan[200],
+        medium: cyan[600],        
         main: cyan[800],
         dark: cyan[900]
     },
