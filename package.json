@@ -7,11 +7,13 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
     "watch": "webpack -debug --watch --progress --mode development",
+    "lint:js": "eslint src/js/**/*.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "7.0.0",
     "@babel/runtime": "^7.10.1",
@@ -27,6 +29,8 @@
     "clsx": "^1.1.0",
     "core-js": "^3.6.5",
     "date-fns": "^2.14.0",
+    "eslint": "^7.2.0",
+    "eslint-plugin-compat": "^3.7.0",
     "react": "^16.8.4",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.8.4",
@@ -56,6 +60,21 @@
     "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.8.1"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "plugins": [
+      "compat"
+    ],
+    "rules": {
+      "compat/compat": "warn"
+    }
   },
   "jest": {
     "snapshotSerializers": [
