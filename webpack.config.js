@@ -47,7 +47,14 @@ module.exports = function(_env, argv) {
           //parse css files
           {
             test: /\.css$/,
-            loader:[ 'style-loader', 'css-loader']
+            use:[ {
+              loader: 'style-loader'
+            }, {
+              loader: 'css-loader',
+              options: {
+                "sourceMap": !isProduction
+              }
+            }]
           },
           {
             test: /\.(png|jpe?g|gif)$/i,
@@ -117,6 +124,7 @@ module.exports = function(_env, argv) {
               comments: false,
               ascii_only: true
             },
+            sourceMap: !isProduction,
             warnings: false
           }
         }),
