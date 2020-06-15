@@ -1,18 +1,22 @@
 {
     "presets": [
-	["@babel/preset-env", {
-        	"useBuiltIns": "entry",
-		"corejs": 3
+        ["@babel/preset-env", {
+            "useBuiltIns": "entry",
+            "corejs": 3,
+            "targets": {
+                "browsers": ["> 0.5%", "last 2 versions", "ie >= 10", "edge >= 12", "firefox >= 50", "chrome >= 50"]
+            }              
         }]
     ],
     "plugins": [
         [
-        "transform-react-jsx"
+            "transform-react-jsx"
         ],
         ["@babel/plugin-transform-runtime",
-        {
-                "regenerator": true
-        }
+            {
+                "regenerator": true,
+                "corejs": 3
+            }
         ]
     ]
 }

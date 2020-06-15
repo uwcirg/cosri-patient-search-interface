@@ -27,7 +27,7 @@ module.exports = function(_env, argv) {
   }
   
   return {
-    entry:  path.join(__dirname, '/src/js/Entry.js'),
+    entry:  ['whatwg-fetch', path.join(__dirname, '/src/js/Entry.js')],
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
@@ -85,6 +85,10 @@ module.exports = function(_env, argv) {
         template: path.join(__dirname, '/src/index.html'),
         favicon: path.join(__dirname, '/src/assets/favicon.ico'),
       }),
+      new webpack.ProvidePlugin({ 
+        React: 'react', 
+        Promise: 'es6-promise'
+      }), 
       new webpack.DefinePlugin({
         ...envKeys,
         "process.env.NODE_ENV": JSON.stringify(
