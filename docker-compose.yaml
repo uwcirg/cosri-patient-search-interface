@@ -1,0 +1,9 @@
+---
+version: "3.4"
+services:
+  web:
+    build:
+      context: .
+    image: "uwcirg/provider-dashboard:${DOCKER_IMAGE_TAG:-latest}"
+    ports:
+      - ${EXTERNAL_PORT:-8015}:${PORT:-80}
